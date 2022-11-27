@@ -1,6 +1,8 @@
 package Seminar2;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Seminar2 {
@@ -63,10 +65,52 @@ public class Seminar2 {
      * 2.Реализуйте алгоритм сортировки пузырьком числового массива, результат после
      * каждой итерации запишите в лог-файл.
      */
+    int arraySize = 10;
+    int[] arr = new int[arraySize];
+    for (int i = 0; i < arraySize; i++) {
+      arr[i] = 0 + (int) (Math.random() * 10);
+    }
+
+    System.out.print("Исходный массив: ");
+    printArray(arr);
+
+    try {
+      FileWriter sortLog = new FileWriter("./Seminar2/sortLog.log");
+
+      for (int i = 0; i < arr.length; i++) {
+        for (int j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            int temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+
+          for (int k = 0; k < arr.length; k++) {
+            if (k == arr.length - 1)
+              sortLog.write(Integer.toString(arr[k]) + "\n");
+            else
+              sortLog.write(Integer.toString(arr[k]) + ", ");
+          }
+        }
+      }
+      sortLog.close();
+    } catch (IOException e) {
+      System.out.println("Ошибка");
+      e.printStackTrace();
+    }
+
+    System.out.print("\nИтоговый массив: ");
+    printArray(arr);
   }
 
-  public static boolean isFileExists(File file) {
-    return file.exists() && !file.isDirectory();
+  static void printArray(int[] array) {
+    System.out.print("[");
+    for (int i = 0; i < array.length; i++) {
+      if (i == array.length - 1)
+        System.out.print(array[i] + "]");
+      else
+        System.out.print(array[i] + ", ");
+    }
   }
 
 }

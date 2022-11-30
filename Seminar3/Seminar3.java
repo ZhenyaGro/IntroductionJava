@@ -1,6 +1,9 @@
 package Seminar3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Seminar3 {
@@ -47,12 +50,34 @@ public class Seminar3 {
     System.out.print("Исходный массив: ");
     System.out.println(Arrays.toString(numbers));
 
+    for (int i = 0; i < numbers.length; i++) {
+      int[] result = null;
+      if (numbers[i] % 2 == 0) {
+        // result.append(numbers[i]);
+      }
+    }
   }
 
   public static void task3() {
     // Задан целочисленный список ArrayList. Найти минимальное, максимальное и
     // среднее из этого списка.
+    int size = 10;
+    ArrayList<Integer> numbers = new ArrayList<Integer>(size);
+    for (int i = 0; i < size; i++) {
+      numbers.add(0 + (int) (Math.random() * 10));
+    }
+    System.out.print("Список: ");
+    System.out.println(numbers.toString());
 
+    int sum = 0;
+    for (int item : numbers)
+      sum += item;
+
+    int avg = sum / numbers.size();
+
+    System.out.println("Максимальное = " + Collections.max(numbers));
+    System.out.println("Минимальное = " + Collections.min(numbers));
+    System.out.println("Среднее = " + avg);
   }
 
   static int[] createArray(int arraySize) {

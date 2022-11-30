@@ -50,12 +50,14 @@ public class Seminar3 {
     System.out.print("Исходный массив: ");
     System.out.println(Arrays.toString(numbers));
 
+    ArrayList<Integer> result = new ArrayList<Integer>();
     for (int i = 0; i < numbers.length; i++) {
-      int[] result = null;
-      if (numbers[i] % 2 == 0) {
-        // result.append(numbers[i]);
+      if (numbers[i] % 2 != 0) {
+        result.add(numbers[i]);
       }
     }
+
+    System.out.println("Итоговый массив: " + result.toString());
   }
 
   public static void task3() {

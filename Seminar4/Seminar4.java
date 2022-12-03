@@ -55,12 +55,11 @@ public class Seminar4 {
     switch (choosenAction) {
       case "1":
         enqueue(queue);
-        System.out.println("Очередь измена: " + queue);
         break;
 
       case "2":
         int removedEl = dequeue(queue);
-        System.out.println("Удален первый элемент = " + removedEl + "\nТекущая очередь: " + queue);
+        System.out.println("Текущая очередь: " + queue);
         break;
 
       case "3":
@@ -107,14 +106,20 @@ public class Seminar4 {
       list.add(element);
     } catch (Exception err) {
       System.out.println("Некорректный ввод.\nОшибка: " + err + "\nОчередь не была изменена");
+      str.close();
+      return;
     }
+    System.out.println("Очередь измена: " + list);
     str.close();
   }
 
   // dequeue() - возвращает первый элемент из очереди и удаляет его
   public static int dequeue(LinkedList<Integer> list) {
-    if (list.size() > 0)
+    if (list.size() > 0) {
+      System.out.println("Удален первый элемент");
       return list.removeFirst();
+    }
+
     System.out.println("В очереди нет элементов");
     return -1;
   }

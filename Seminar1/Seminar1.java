@@ -1,6 +1,5 @@
 package Seminar1;
 
-import java.security.DrbgParameters.NextBytes;
 import java.util.Scanner;
 
 public class Seminar1 {

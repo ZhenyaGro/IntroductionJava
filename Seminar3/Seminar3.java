@@ -2,7 +2,6 @@ package Seminar3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -29,6 +28,7 @@ public class Seminar3 {
         System.out.println("Некорректный ввод");
         break;
     }
+    str.close();
   }
 
   public static void task1() {

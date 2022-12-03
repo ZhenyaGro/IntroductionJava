@@ -1,6 +1,5 @@
 package Seminar2;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Scanner;
@@ -24,7 +23,7 @@ public class Seminar2 {
         System.out.println("Некорректный ввод");
         break;
     }
-
+    str.close();
   }
 
   public static void task1() {

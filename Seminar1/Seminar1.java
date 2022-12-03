@@ -27,7 +27,7 @@ public class Seminar1 {
         System.out.println("Некорректный ввод");
         break;
     }
-
+    str.close();
   }
 
   public static void task1() {

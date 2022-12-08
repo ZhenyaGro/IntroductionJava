@@ -1,5 +1,6 @@
 package Seminar5;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -66,5 +67,24 @@ public class Seminar5 {
      * Написать программу, которая найдет и выведет повторяющиеся имена с
      * количеством повторений. Отсортировать по убыванию популярности.
      */
+    String[] people = new String[] { "Иван Иванов", "Светлана Петрова", "Кристина Белова",
+        "Анна Мусина", "Анна Крутова", "Иван Юрин", "Петр Лыков", "Павел Чернов",
+        "Петр Чернышов", "Мария Федорова", "Марина Светлова", "Мария Савина", "Мария Рыкова",
+        "Марина Лугова", "Анна Владимирова", "Иван Мечников", "Петр Петин", "Иван Ежов" };
+
+    Map<String, Integer> names = new HashMap<>();
+    for (String person : people) {
+      String name = person.split(" ")[0];
+      if (!names.containsKey(name))
+        names.put(name, 1);
+      else
+        names.put(name, names.get(name) + 1);
+    }
+
+    names.entrySet()
+        .stream()
+        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+        .forEach(person -> System.out.println("Имя \"" + person.getKey() + "\" встречается " +
+            person.getValue() + " раз"));
   }
 }

@@ -86,7 +86,11 @@ public class Seminar6 {
         break;
 
       case "3":
-        //
+        int[] fDiscSpace = new int[2];
+        System.out.print("Введите объем оперативной памяти (RAM) в Гб\nОт ");
+        fDiscSpace[0] = str.nextInt();
+        System.out.print("до ");
+        fDiscSpace[1] = str.nextInt();
         break;
 
       case "4":

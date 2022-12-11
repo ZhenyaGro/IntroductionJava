@@ -20,7 +20,6 @@ public class Seminar6 {
       BufferedReader reader = new BufferedReader(fr);
       String line;
       while (true) {
-        // System.out.println(line);
         line = reader.readLine();
         if (line != null) {
           props = line.split(", ");
@@ -36,20 +35,64 @@ public class Seminar6 {
       e.printStackTrace();
     }
 
-    System.out.print("\nМеню\n1 - Вывести список ноутбуков\n");
+    System.out.print("\nМеню\n1 - Вывести список ноутбуков\n2 - Найти ноутбук по критерию\n");
 
     Scanner str = new Scanner(System.in);
     String choosenTask = str.next();
 
     switch (choosenTask) {
       case "1":
-        System.out.println("Список ноутбуков");
-        for (Laptop laptop : laptops)
-          System.out.println(laptop);
+        printLaptops(laptops);
         break;
 
       case "2":
-        // task2();
+        searchForLaptop(laptops);
+        break;
+
+      default:
+        System.out.println("Некорректный ввод");
+        break;
+    }
+    str.close();
+  }
+
+  static void printLaptops(List<Laptop> laptopsList) {
+    System.out.println("Список ноутбуков");
+    for (Laptop laptop : laptopsList)
+      System.out.println(laptop);
+  }
+
+  static void searchForLaptop(List<Laptop> laptopsList) {
+    System.out.println(
+        "Выберите фильтр:\n1 - Производитель\n2 - Объем оперативной памяти\n3 - Объем дискового пространства\n4 - Операционная система\n5 - Цвет");
+    Scanner str = new Scanner(System.in);
+    String filter = str.next();
+
+    switch (filter) {
+      case "1":
+        System.out.print("Введите наименование производителя: ");
+        String fManufacturer = str.next();
+        System.out.println("Ноутбуки соответствующие критерию: ");
+        for (Laptop laptop : laptopsList) {
+          if (fManufacturer.toLowerCase().equals(laptop.getProperty(filter).toString().toLowerCase()))
+            System.out.println(laptop);
+        }
+        break;
+
+      case "2":
+        //
+        break;
+
+      case "3":
+        //
+        break;
+
+      case "4":
+        //
+        break;
+
+      case "5":
+        //
         break;
 
       default:

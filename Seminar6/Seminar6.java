@@ -66,21 +66,23 @@ public class Seminar6 {
     System.out.println(
         "Выберите фильтр:\n1 - Производитель\n2 - Объем оперативной памяти\n3 - Объем дискового пространства\n4 - Операционная система\n5 - Цвет");
     Scanner str = new Scanner(System.in);
-    String filter = str.next();
+    String filterType = str.next();
 
-    switch (filter) {
+    switch (filterType) {
       case "1":
         System.out.print("Введите наименование производителя: ");
         String fManufacturer = str.next();
-        System.out.println("Ноутбуки соответствующие критерию: ");
-        for (Laptop laptop : laptopsList) {
-          if (fManufacturer.toLowerCase().equals(laptop.getProperty(filter).toString().toLowerCase()))
-            System.out.println(laptop);
-        }
+        checkEquality(laptopsList, filterType, fManufacturer);
         break;
 
       case "2":
-        //
+        int[] fRam = new int[2];
+        System.out.print("Введите объем оперативной памяти (RAM) в Гб\nОт ");
+        fRam[0] = str.nextInt();
+        System.out.print("до ");
+        fRam[1] = str.nextInt();
+
+        checkEquality(laptopsList, filterType, fRam);
         break;
 
       case "3":
@@ -88,11 +90,15 @@ public class Seminar6 {
         break;
 
       case "4":
-        //
+        System.out.print("Введите наименование операционной системы: ");
+        String fOs = str.next();
+        checkEquality(laptopsList, filterType, fOs);
         break;
 
       case "5":
-        //
+        System.out.print("Введите цвет: ");
+        String fColor = str.next();
+        checkEquality(laptopsList, filterType, fColor);
         break;
 
       default:
@@ -100,5 +106,29 @@ public class Seminar6 {
         break;
     }
     str.close();
+  }
+
+  static void checkEquality(List<Laptop> laptopsList, String filterType, Object filterValue) {
+    switch (filterType) {
+      case "1":
+      case "4":
+      case "5":
+        System.out.println("Ноутбуки соответствующие критерию: ");
+        for (Laptop laptop : laptopsList) {
+          if (filterValue.toString().toLowerCase().equals(laptop.getProperty(filterType).toString().toLowerCase()))
+            System.out.println(laptop);
+        }
+        break;
+      case "2":
+      case "3":
+        System.out.println("Ноутбуки соответствующие критерию: ");
+        for (Laptop laptop : laptopsList) {
+          int laptopPropValue = (int) laptop.getProperty(filterType);
+          int[] values = (int[]) filterValue;
+          if (laptopPropValue > values[0] && laptopPropValue < values[1])
+            System.out.println(laptop);
+        }
+        break;
+    }
   }
 }

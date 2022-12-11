@@ -1,0 +1,5 @@
+HP, 16, 512, Windows, Черный
+Apple, 32, 256, MacOS, Серый
+Acer, 16, 1024, Linux, Синий
+Huawei, 8, 256, Windows, Серебристый
+Samsung, 16, 512, Windows, Серый

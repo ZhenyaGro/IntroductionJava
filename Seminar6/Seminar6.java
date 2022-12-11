@@ -12,23 +12,24 @@ import java.util.Scanner;
 public class Seminar6 {
   // Текст задания в файле "task.txt"
   public static void main(String[] args) {
+    List<Laptop> laptops = new ArrayList<>();
+    String[] props = new String[5];
     try {
       File file = new File("./Seminar6/laptops.txt");
       FileReader fr = new FileReader(file);
       BufferedReader reader = new BufferedReader(fr);
-      String line = reader.readLine();
-      // String properties[] = new String[5];
-
-      Laptop testLaptop = new Laptop("Apple", 10, 10, "lne", "tes");
-      System.out.println(testLaptop);
-      List<Laptop> laptops = new ArrayList<>();
-
-      while (line != null) {
-        System.out.println(line);
+      String line;
+      while (true) {
+        // System.out.println(line);
         line = reader.readLine();
-        // laptops.add(line.split(", "));
+        if (line != null) {
+          props = line.split(", ");
+          laptops.add(new Laptop(props[0], Integer.parseInt(props[1]), Integer.parseInt(props[2]), props[3], props[4]));
+        } else
+          break;
       }
       reader.close();
+      System.out.println(laptops);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {
@@ -42,7 +43,9 @@ public class Seminar6 {
 
     switch (choosenTask) {
       case "1":
-        // task1();
+        System.out.println("Список ноутбуков");
+        for (Laptop laptop : laptops)
+          System.out.println(laptop);
         break;
 
       case "2":
